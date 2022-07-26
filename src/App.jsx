@@ -1,6 +1,7 @@
 import './App.css';
 import GameList from './components/GameList';
-import GameDetails from './components/GameDetails';
+import GameDetail from './components/GameDetail';
+import Header from './components/Header';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 
@@ -8,14 +9,11 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 function App() {
   return (
     <Router>
-      <div className="App">
-      <header>
-        <h1>Welcome to The Game</h1>
-        </header>
+      <div>
+      <Header name='React Game' />
         <Routes>
           <Route path='/' element={<GameList />} />
-          <Route path='/games/:id' element={<GameDetails />} />
-
+          <Route path='/games/:id' element={<GameDetail />} />
         </Routes>
       </div>  
   </Router>

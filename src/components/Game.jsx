@@ -1,20 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';      
 
-const Game = (props) => {
+const Game = (game) => {
         return (
             <div>
-            
-                <Link to='/'>
-                <h2>{props.title}</h2>
-                <img src={props.image} width={"150px"}/>
-                <p>{props.rating}</p>
-                <button>MORE INFORMATION</button>
+                
+                <h2>{game.title}</h2>
+                <Link to={`/games/${game.id}`}>
+                <img src={game.image} width={"150px"}/>
                 </Link>
-
-
-            
-
+                <p>{game.rating}</p>
+                <button>MORE INFORMATION</button>
             </div>
         );
     }

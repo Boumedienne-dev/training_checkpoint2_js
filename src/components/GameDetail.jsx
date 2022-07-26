@@ -6,20 +6,24 @@ import axios from 'axios';
 const GameDetails = () => {
 
     let {id} = useParams ();
-    const [data1, setData1] = useState([]);
+    const [gameDetails, setGameDetails] = useState([]);
 
     useEffect(() => {
         axios
             .get(`https://apis.wilders.dev/wild-games/games/${id}`)
-            // .then(response => response.data)
-            .then(data => setData1(data.data))
+            .then(game => setGameDetails(game.data))
     }, [])
 
     return (
         <div>
-            {data1}
-            <Link to='/'>Lien vers Game List</Link>
+            <Link to='/'>
+            {
+                gameDetails && <div>
+                    <h2>{gameDetails.name}</h2>
+                    </div>
+            }
             
+            </Link>
         </div>
     );
 };

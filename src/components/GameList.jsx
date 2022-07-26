@@ -1,25 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react';
 import axios from 'axios';
 import Game from './Game';
 
 
 const GameList = (props) => {
 
-    const {name} = {...props.game};
     const [games, setGames] = useState ([]);
+    const [ratingFilter, setRatingFilter] =useState(false);
         
     
 
     useEffect(() => {
         axios
             .get(`https://apis.wilders.dev/wild-games/games/`)
-            // .then(response => response.data)
-            .then(data => setGames(data.data))
+            .then(response => response.data)
+            .then(data => setGames(data))
     }, [])
+
+
+const handleRatingFilter = () => {
+    setRatingFilter(!ratingFilter);
+}
+
     return (
-        <div>
-            {games.map((game) =>
+        <>
+        <button onClick={handleRatingFilter}>
+            {
+                ratingFilter
+                    ? "Afficher la liste complète"
+                    : "Afficher les meilleurs jeux"
+            }
+            </button>
+        
+            {games
+            .filter ((game => !ratingFilter || game.rating > 4.5))           
+            .map((game) =>
             <Game
             title={game.name}
             image={game.background_image}
@@ -29,7 +44,7 @@ const GameList = (props) => {
             )
             
         }
-        </div>
+        </>
     );
 };
 
