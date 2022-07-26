@@ -9,6 +9,7 @@ const Game = (game) => {
                 <Link to={`/games/${game.id}`}>
                 <img src={game.image} width={"150px"}/>
                 </Link>
+                <video src={game.clip}/>
                 <p>{game.rating}</p>
                 <button>MORE INFORMATION</button>
             </div>

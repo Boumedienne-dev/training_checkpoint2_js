@@ -39,7 +39,8 @@ const handleRatingFilter = () => {
             title={game.name}
             image={game.background_image}
             rating={game.rating}
-            key={game.id}
+            clip={game.clip}
+            id={game.id}
             />
             )
             

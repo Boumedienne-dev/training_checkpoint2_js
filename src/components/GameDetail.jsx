@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
-import {Link} from 'react';
+import {useParams, Link} from 'react-router-dom';
 import axios from 'axios';
 
-const GameDetails = () => {
+const GameDetail = () => {
 
     let {id} = useParams ();
     const [gameDetails, setGameDetails] = useState([]);
@@ -20,6 +19,10 @@ const GameDetails = () => {
             {
                 gameDetails && <div>
                     <h2>{gameDetails.name}</h2>
+                    <img src={gameDetails.background_image} width= '300px'/>
+                    <video widht="750" heights="500" controls>
+                        <source src={gameDetails.clip} type="video/mp4" />
+                    </video>
                     </div>
             }
             
@@ -28,4 +31,4 @@ const GameDetails = () => {
     );
 };
 
-export default GameDetails;
+export default GameDetail;
