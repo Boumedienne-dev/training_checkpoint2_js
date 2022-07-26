@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Game extends Component {
-    render() {
+const Game = (props) => {
         return (
             <div>
-                
+                <h2>{props.title}</h2>
+                <img src={props.image} width={"150px"}/>
+                <p>{props.rating}</p>
+
             </div>
         );
     }
-}
+
 
 export default Game;
